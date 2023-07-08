@@ -28,4 +28,12 @@ class AccountTest {
     assertFalse(account.getBalance().compareTo(BigDecimal.ZERO) < 0);
     assertTrue(account.getBalance().compareTo(BigDecimal.ZERO) > 0);
   }
+
+  @Test
+  void testAccountReference() {
+    Account account = new Account("Ángel", new BigDecimal("1234567.89098"));
+    Account account2 = new Account("Ángel", new BigDecimal("1234567.89098"));
+
+    assertEquals(account, account2);
+  }
 }

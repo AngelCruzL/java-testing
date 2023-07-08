@@ -26,4 +26,18 @@ public class Account {
   public void setBalance(BigDecimal balance) {
     this.balance = balance;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (!(obj instanceof Account)) {
+      return false;
+    }
+
+    Account account = (Account) obj;
+    if (this.client == null || this.balance == null) {
+      return false;
+    }
+
+    return this.client.equals(account.getClient()) && this.balance.equals(account.getBalance());
+  }
 }
