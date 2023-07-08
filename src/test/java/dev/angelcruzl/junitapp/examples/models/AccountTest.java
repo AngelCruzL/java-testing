@@ -17,4 +17,15 @@ class AccountTest {
 
     assertEquals(expected, actual);
   }
+
+  @Test
+  void testAccountBalance() {
+    BigDecimal balance = new BigDecimal("1234567.89098");
+
+    Account account = new Account("Ángel", balance);
+
+    assertEquals(balance, account.getBalance());
+    assertFalse(account.getBalance().compareTo(BigDecimal.ZERO) < 0);
+    assertTrue(account.getBalance().compareTo(BigDecimal.ZERO) > 0);
+  }
 }
