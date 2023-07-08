@@ -1,5 +1,6 @@
 package dev.angelcruzl.junitapp.examples.models;
 
+import dev.angelcruzl.junitapp.examples.exceptions.InsufficientMoneyException;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -55,5 +56,19 @@ class AccountTest {
     assertNotNull(account.getBalance());
     assertEquals(new BigDecimal("1234667.89098"), account.getBalance());
     assertEquals("1234667.89098", account.getBalance().toPlainString());
+  }
+
+  @Test
+  void testInsufficientMoneyException() {
+    Account account = new Account("Ángel", new BigDecimal("1234567.89098"));
+
+    Exception exception = assertThrows(InsufficientMoneyException.class, () -> {
+      account.debit(new BigDecimal("11234567.89099"));
+    });
+
+    String expected = "Insufficient money";
+    String actual = exception.getMessage();
+
+    assertEquals(expected, actual);
   }
 }
