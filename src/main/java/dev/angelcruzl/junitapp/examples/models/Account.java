@@ -6,6 +6,11 @@ public class Account {
   private String client;
   private BigDecimal balance;
 
+  public Account(String client, BigDecimal balance) {
+    this.client = client;
+    this.balance = balance;
+  }
+
   public String getClient() {
     return client;
   }
